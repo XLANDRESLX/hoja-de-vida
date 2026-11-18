@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generador de Hoja de Vida Estilo Harvard Gratis | Anexos y PDF</title>
+<meta name="description" content="Crea tu hoja de vida estilo Harvard gratis: vista previa A4 o Carta en tiempo real, anexos con fotos y exportación a PDF. Sin registro; tus datos no salen del navegador.">
+<meta name="keywords" content="hoja de vida, currículum, estilo Harvard, generador de CV, CV con anexos, exportar PDF, ingeniero de redes, CCTV">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://TU-USUARIO.github.io/hoja-de-vida/">
+<meta name="theme-color" content="#6366f1">
+<link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="icon-192.png"><link rel="manifest" href="manifest.webmanifest">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Hoja de Vida Harvard"><meta property="og:locale" content="es_LA">
+<meta property="og:title" content="Generador de Hoja de Vida Estilo Harvard Gratis | Anexos y PDF"><meta property="og:description" content="Crea tu hoja de vida estilo Harvard gratis: vista previa A4 o Carta en tiempo real, anexos con fotos y exportación a PDF. Sin registro; tus datos no salen del navegador."><meta property="og:url" content="https://TU-USUARIO.github.io/hoja-de-vida/"><meta property="og:image" content="https://TU-USUARIO.github.io/hoja-de-vida/og.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Generador de Hoja de Vida Estilo Harvard Gratis | Anexos y PDF"><meta name="twitter:description" content="Crea tu hoja de vida estilo Harvard gratis: vista previa A4 o Carta en tiempo real, anexos con fotos y exportación a PDF. Sin registro; tus datos no salen del navegador."><meta name="twitter:image" content="https://TU-USUARIO.github.io/hoja-de-vida/og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Generador de Hoja de Vida Estilo Harvard", "url": "https://TU-USUARIO.github.io/hoja-de-vida/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "inLanguage": "es", "description": "Crea tu hoja de vida estilo Harvard gratis: vista previa A4 o Carta en tiempo real, anexos con fotos y exportación a PDF. Sin registro; tus datos no salen del navegador.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "featureList": ["Vista previa A4 y Carta", "Anexos con varias fotos", "Exportación a PDF", "Funciona sin conexión", "Varios perfiles"]}</script>
+<!-- Fuentes: si no hay conexión, se usan las de respaldo del sistema (offline-first) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#0d1117; --bg2:#151b26; --panel:rgba(26,33,48,.72); --line:rgba(148,163,184,.16);
+  --text:#e6eaf2; --muted:#8b97ad; --accent:#6366f1; --accent2:#818cf8; --ok:#34d399; --danger:#f87171;
+  --ui:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --serif:'EB Garamond','Crimson Pro',Georgia,'Times New Roman',serif;
+  --r:1rem;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--ui);color:var(--text);background:radial-gradient(1200px 600px at 10% -10%,#1e2547 0,transparent 60%),var(--bg);}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+
+/* ============ LAYOUT SPLIT ============ */
+.app{display:grid;grid-template-columns:minmax(360px,460px) 1fr;height:100vh}
+.panel{display:flex;flex-direction:column;min-height:0;margin:.75rem;border:1px solid var(--line);border-radius:var(--r);
+  background:var(--panel);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);overflow:hidden}
+.panel header{padding:1rem 1.1rem .6rem}
+.panel h1{font-size:1rem;margin:0 0 .15rem;font-weight:700;letter-spacing:-.01em}
+.panel header p{margin:0;color:var(--muted);font-size:.78rem}
+.actions{display:flex;flex-wrap:wrap;gap:.4rem;padding:.4rem 1.1rem .8rem}
+.btn{border:1px solid var(--line);background:rgba(255,255,255,.04);padding:.45rem .75rem;border-radius:.65rem;font-size:.78rem;font-weight:500;cursor:pointer;transition:.18s}
+.btn:hover{background:rgba(255,255,255,.09);border-color:var(--accent2)}
+.btn.danger:hover{border-color:var(--danger);color:var(--danger)}
+.btn.primary{background:var(--accent);border-color:var(--accent)}
+.btn.primary:hover{background:var(--accent2)}
+.tabs{display:flex;gap:.25rem;padding:0 .8rem;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tab{background:none;border:0;padding:.65rem .7rem;font-size:.8rem;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.18s}
+.tab:hover{color:var(--text)}
+.tab[aria-selected=true]{color:var(--text);border-color:var(--accent2);font-weight:600}
+.panes{flex:1;overflow-y:auto;padding:1rem 1.1rem 5rem}
+.pane{display:none}.pane.on{display:block}
+label{display:block;font-size:.74rem;color:var(--muted);margin:.8rem 0 .3rem;font-weight:500}
+input[type=text],input[type=email],input[type=tel],textarea{width:100%;background:rgba(8,11,18,.55);border:1px solid var(--line);border-radius:.7rem;padding:.6rem .75rem;font-size:.86rem;transition:border-color .18s,box-shadow .18s}
+input:focus,textarea:focus{outline:0;border-color:var(--accent2);box-shadow:0 0 0 3px rgba(99,102,241,.25)}
+textarea{resize:vertical;min-height:84px;line-height:1.45}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.hint{font-size:.72rem;color:var(--muted);margin:.4rem 0 0;line-height:1.4}
+.item{border:1px solid var(--line);border-radius:.85rem;padding:.2rem .9rem .9rem;margin-top:.9rem;background:rgba(255,255,255,.025)}
+.item-top{display:flex;justify-content:space-between;align-items:center;margin-top:.6rem;font-size:.78rem;font-weight:600}
+.x{background:none;border:0;color:var(--muted);cursor:pointer;font-size:.78rem}.x:hover{color:var(--danger)}
+.add{width:100%;margin-top:.9rem;border-style:dashed;padding:.7rem}
+.thumb{width:100%;height:120px;object-fit:cover;border-radius:.6rem;margin-top:.6rem;border:1px solid var(--line)}
+.check{display:flex;align-items:center;gap:.5rem;margin-top:.7rem;font-size:.8rem;cursor:pointer}
+.check input{accent-color:var(--accent);width:16px;height:16px}
+.drop{display:block;text-align:center;padding:1.3rem;border:1.5px dashed var(--line);border-radius:var(--r);cursor:pointer;color:var(--muted);font-size:.82rem;transition:.18s;margin:0}
+.drop:hover{border-color:var(--accent2);color:var(--text);background:rgba(99,102,241,.07)}
+.drop input{display:none}
+.status{position:absolute;left:1.1rem;bottom:.7rem;font-size:.72rem;color:var(--muted)}
+
+/* ============ VISTA PREVIA ============ */
+.preview{overflow:auto;padding:1.5rem;display:flex;justify-content:center;align-items:flex-start;background:linear-gradient(180deg,#1b2233,#10141d)}
+.sheet{width:210mm;min-height:297mm;flex:none;background:#fff;color:#111;padding:16mm 18mm;
+  font-family:var(--serif);font-size:11pt;line-height:1.35;
+  box-shadow:0 1px 2px rgba(0,0,0,.2),0 8px 16px rgba(0,0,0,.25),0 24px 56px rgba(0,0,0,.35);border:1px solid #d9dce3;transition:box-shadow .3s}
+.sheet:hover{box-shadow:0 2px 4px rgba(0,0,0,.2),0 14px 28px rgba(0,0,0,.28),0 36px 80px rgba(0,0,0,.4)}
+.cv-name{font-size:23pt;font-weight:600;text-align:center;letter-spacing:.02em;margin:0;line-height:1.1}
+.cv-title{text-align:center;font-style:italic;margin:.15em 0 .3em;font-size:12pt}
+.cv-contact{text-align:center;font-size:10pt;padding-bottom:.5em;border-bottom:1.2px solid #111;margin-bottom:.2em}
+.cv-sec{margin-top:.9em;break-inside:auto}
+.cv-sec h2{font-size:11pt;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:0 0 .45em;padding-bottom:.1em;border-bottom:.6px solid #111;break-after:avoid}
+.row{display:flex;justify-content:space-between;gap:1em;align-items:baseline}
+.row b{font-weight:700}.row span.d{white-space:nowrap}
+.sub{font-style:italic;margin-bottom:.15em}
+.entry{margin-bottom:.65em;break-inside:avoid}
+.cv-sec ul{margin:.2em 0 0;padding-left:1.25em}.cv-sec li{margin-bottom:.12em}
+.sk{margin-bottom:.15em}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:.9em}
+.fig{margin:0;break-inside:avoid;border:.6px solid #999;padding:.4em}
+.fig img{width:100%;max-height:62mm;object-fit:contain;display:block;background:#f6f6f6}
+.fig figcaption{font-size:9.5pt;margin-top:.3em}
+.fig figcaption b{display:block}
+.annex-page{break-before:page}
+.empty-note{color:#888;font-style:italic;text-align:center;margin-top:3em}
+
+.fab{position:fixed;right:1.6rem;bottom:1.6rem;z-index:20;background:linear-gradient(135deg,var(--accent),#4f46e5);border:0;color:#fff;font-weight:600;
+  padding:.9rem 1.4rem;border-radius:999px;cursor:pointer;box-shadow:0 10px 30px rgba(79,70,229,.5);transition:.2s;font-size:.9rem}
+.fab:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(79,70,229,.65)}
+.toast{position:fixed;left:50%;bottom:1.6rem;transform:translate(-50%,20px);background:#1f2937;border:1px solid var(--line);padding:.55rem 1rem;border-radius:.7rem;font-size:.82rem;opacity:0;pointer-events:none;transition:.25s;z-index:30}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media screen and (max-width:900px){
+  .app{grid-template-columns:1fr;height:auto}
+  .panel{height:80vh}.preview{padding:.75rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.sheet{position:relative}
+.mv{background:none;border:0;color:var(--muted);cursor:pointer;font-size:.85rem}.mv:hover{color:var(--text)}
+.ph{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-top:.6rem}
+.ph div{position:relative}.ph img{width:100%;height:70px;object-fit:cover;border-radius:.5rem;border:1px solid var(--line)}
+.ph button{position:absolute;top:2px;right:2px;border:0;border-radius:50%;width:20px;height:20px;background:rgba(0,0,0,.75);color:#fff;cursor:pointer;line-height:1}
+select{background:rgba(8,11,18,.55);border:1px solid var(--line);border-radius:.7rem;padding:.55rem;width:100%;font-size:.85rem}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.pill{position:fixed;top:1rem;right:1.6rem;z-index:15;background:#1f2937;border:1px solid var(--line);padding:.3rem .7rem;border-radius:999px;font-size:.74rem}
+.pgline{position:absolute;left:0;right:0;height:0;border-top:1px dashed #e11d48;opacity:.6;font:600 8px var(--ui);color:#e11d48;text-align:right}
+.annex{margin-bottom:.9em}.annex h3{font-size:11pt;margin:.2em 0 .1em;break-after:avoid}.annex p{margin:0 0 .4em;font-size:10pt}
+.gallery.c1{grid-template-columns:1fr}.gallery.c3{grid-template-columns:repeat(3,1fr)}
+.mbar{display:none}
+@media screen and (max-width:900px){.mbar{display:flex;gap:.4rem;padding:.6rem .75rem 0}.mbar .btn{flex:1}.app.vp .panel{display:none}.app:not(.vp) .preview{display:none}.panel{height:calc(100vh - 5rem)}.pill{top:auto;bottom:5rem;right:1rem}}
+.ph .t2{top:auto;bottom:2px}.ph .t3{top:auto;bottom:2px;right:24px}
+.about{margin-top:1.5rem;font-size:.8rem;color:var(--muted);line-height:1.5}.about h2{font-size:.9rem;color:var(--text);margin:1rem 0 .3rem}
+.foot{display:flex;flex-wrap:wrap;gap:.4rem 1rem;margin-top:1.2rem;font-size:.75rem}.foot a{color:var(--accent2)}
+.notice{position:fixed;left:1rem;bottom:1rem;z-index:40;max-width:26rem;display:flex;gap:.8rem;align-items:center;background:#1f2937;border:1px solid var(--line);border-radius:var(--r);padding:.8rem 1rem;font-size:.78rem;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.notice[hidden]{display:none}.notice a{color:var(--accent2)}
+/* ============ IMPRESIÓN / PDF ============ */
+@page{size:A4;margin:14mm 16mm}
+@media print{
+  html,body{height:auto;background:#fff!important}
+  .panel,.fab,.toast,.pill,.pgline,.mbar,.notice{display:none!important}
+  .app{display:block!important;height:auto}
+  .preview{padding:0;overflow:visible;background:#fff;display:block!important}
+  .sheet{zoom:1!important;width:auto!important;min-height:0!important;padding:0;border:0;box-shadow:none!important;margin:0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<style id="pgcss"></style>
+</head>
+<body>
+<noscript><p style="padding:1rem;color:#fff">Esta herramienta necesita JavaScript. Tus datos nunca salen de tu navegador. <a href="legal.html">Información legal</a></p></noscript>
+<div class="app" id="app">
+  <div class="mbar"><button class="btn" data-v="0">Editar</button><button class="btn" data-v="1">Vista previa</button></div>
+
+  <!-- ============ PANEL DE EDICIÓN ============ -->
+  <aside class="panel" aria-label="Panel de edición">
+    <header>
+      <h1>Generador de hoja de vida estilo Harvard</h1>
+      <p>Los cambios se ven al instante a la derecha y se guardan solos en tu navegador.</p>
+    </header>
+    <div class="actions">
+      <button class="btn primary" id="save">Guardar borrador</button>
+      <button class="btn" id="demo">Cargar datos por defecto</button>
+      <button class="btn danger" id="clear">Limpiar</button>
+      <button class="btn" id="exp">Exportar respaldo</button><button class="btn" id="imp">Importar respaldo</button><input type="file" id="impf" accept=".json" hidden>
+    </div>
+    <div class="actions" style="padding-top:0"><select id="prof" style="flex:1;min-width:140px" aria-label="Perfil activo"></select><button class="btn" id="pnew">Nuevo perfil</button><button class="btn" id="pren">Renombrar</button><button class="btn danger" id="pdel">Eliminar</button></div>
+    <div class="tabs" role="tablist" id="tabs"></div>
+
+    <div class="panes">
+      <section class="pane" id="p-datos">
+        <label>Nombre completo</label><input type="text" data-b="nombre">
+        <label>Título profesional</label><input type="text" data-b="titulo">
+        <div class="grid2">
+          <div><label>Correo</label><input type="email" data-b="email"></div>
+          <div><label>Teléfono</label><input type="tel" data-b="tel"></div>
+          <div><label>Ciudad, país</label><input type="text" data-b="ciudad"></div>
+          <div><label>LinkedIn</label><input type="text" data-b="linkedin"></div>
+        </div>
+        <label>Sitio web / GitHub</label><input type="text" data-b="web">
+        <div class="grid2"><div><label>Papel</label><select id="papel"><option value="a4">A4</option><option value="letter">Carta</option></select></div>
+        <div><label>Idioma de la hoja</label><select id="lang"><option value="es">Español</option><option value="en">English</option></select></div></div>
+        <label>Tamaño de letra: <span id="fsv"></span> pt</label><input type="range" id="fs" min="9" max="12" step=".5">
+      </section>
+
+      <section class="pane" id="p-perfil">
+        <label>Perfil profesional</label>
+        <textarea data-b="perfil" rows="8"></textarea>
+        <p class="hint">Resume en 3 a 4 líneas tu especialidad, años de experiencia y el resultado que aportas.</p>
+      </section>
+
+      <section class="pane" id="p-skills">
+        <label>Habilidades (una categoría por línea)</label>
+        <textarea data-b="habilidades" rows="9"></textarea>
+        <p class="hint">Formato: <em>Categoría: habilidad, habilidad, habilidad</em></p>
+      </section>
+
+      <section class="pane" id="p-exp"><div id="l-exp"></div><button class="btn add" data-add="exp">+ Agregar experiencia</button></section>
+      <section class="pane" id="p-edu"><div id="l-edu"></div><button class="btn add" data-add="edu">+ Agregar estudio</button></section>
+
+      <section class="pane" id="p-extras">
+        <label>Proyectos destacados (uno por línea; escribe [A1] para citar el Anexo 1)</label><textarea data-b="proy" rows="6"></textarea>
+        <label>Referencias (una por línea)</label><textarea data-b="refs" rows="4"></textarea>
+        <label>Secciones visibles en la hoja</label>
+        <label class="check"><input type="checkbox" data-vis="p">Perfil</label><label class="check"><input type="checkbox" data-vis="x">Experiencia</label><label class="check"><input type="checkbox" data-vis="y">Proyectos</label><label class="check"><input type="checkbox" data-vis="e">Educación</label><label class="check"><input type="checkbox" data-vis="h">Habilidades</label><label class="check"><input type="checkbox" data-vis="r">Referencias</label><label class="check"><input type="checkbox" data-vis="a">Anexos</label>
+      </section>
+      <section class="pane" id="p-anx">
+        <label class="drop"><input type="file" id="files" accept="image/*" multiple>Sube varias fotos de un mismo tema<br><small>Todas las fotos seleccionadas se agrupan en un solo anexo</small></label>
+        <button class="btn add" data-add="anx">+ Nuevo anexo vacío</button>
+        <div id="l-anx"></div>
+      </section>
+      <details class="about"><summary>Acerca de esta herramienta</summary>
+        <h2>Hoja de vida estilo Harvard, gratis y sin registro</h2>
+        <p>Crea un currículum sobrio y profesional con vista previa A4 o Carta, anexos con varias fotos de evidencia (redes, CCTV, desarrollo web) y exportación a PDF desde tu navegador. Funciona sin conexión y puedes guardar varios perfiles.</p>
+        <h2>Preguntas frecuentes</h2>
+        <p><b>¿Se suben mis datos a un servidor?</b> No. Todo se guarda en tu navegador.</p>
+        <p><b>¿Cómo obtengo el PDF?</b> Pulsa «Imprimir / Exportar a PDF» y elige «Guardar como PDF».</p>
+        <p><b>¿Cómo cito un anexo?</b> Escribe [A1], [A2]… en logros, proyectos o perfil.</p>
+      </details>
+      <nav class="foot" aria-label="Información legal"><a href="legal.html#privacidad">Privacidad</a><a href="legal.html#terminos">Términos</a><a href="legal.html#cookies">Cookies y almacenamiento</a><a href="legal.html#descargo">Descargo</a><a href="legal.html#licencia">Licencia</a></nav>
+    </div>
+    <span class="status" id="status">Listo</span>
+  </aside>
+
+  <!-- ============ VISTA PREVIA A4 ============ -->
+  <main class="preview" id="preview"><article class="sheet" id="sheet"></article></main>
+</div>
+
+<button class="fab" id="print">Imprimir / Exportar a PDF</button>
+<div class="pill" id="pill"></div>
+<div class="notice" id="notice" hidden><span>Esta app guarda tus datos solo en tu navegador y no usa cookies de seguimiento. <a href="legal.html#cookies">Más información</a></span><button class="btn primary" id="nok">Entendido</button></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============ ESTADO Y DATOS ============ */
+const KEY='cv_harvard_v1';
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const lines=t=>String(t||'').split('\n').map(x=>x.trim()).filter(Boolean);
+const uid=()=>Math.random().toString(36).slice(2,9);
+
+const EMPTY={nombre:'',titulo:'',email:'',tel:'',ciudad:'',linkedin:'',web:'',perfil:'',habilidades:'',exp:[],edu:[],anx:[],papel:'a4',lang:'es',fs:11,proy:'',refs:'',vis:{p:true,x:true,y:true,e:true,h:true,r:true,a:true}};
+
+const DEMO={
+  nombre:'Nombre Apellido', titulo:'Ingeniero de Redes y Desarrollador Web',
+  email:'correo@ejemplo.com', tel:'+57 300 000 0000', ciudad:'Ciudad, País',
+  linkedin:'linkedin.com/in/usuario', web:'github.com/usuario',
+  perfil:'Ingeniero con experiencia en diseño e implementación de redes LAN/WAN, sistemas de videovigilancia CCTV y desarrollo de aplicaciones web. Enfocado en infraestructura confiable, documentación clara y soluciones que reducen tiempos de inactividad y costos de operación.',
+  habilidades:'Redes: Cisco, MikroTik, VLAN, VPN, enrutamiento OSPF/BGP, Wi-Fi empresarial\nVideovigilancia: Cámaras IP, NVR/DVR, Hikvision, Dahua, cableado estructurado, ONVIF\nDesarrollo web: HTML5, CSS3, JavaScript, Git, GitHub Pages, diseño responsivo\nHerramientas: Linux, Wireshark, Packet Tracer, Zabbix, Microsoft Office\nIdiomas: Español (nativo), Inglés (intermedio)',
+  exp:[
+    {id:uid(),cargo:'Ingeniero de Redes y Seguridad Electrónica',empresa:'Empresa de Tecnología S.A.S.',lugar:'Ciudad, País',inicio:'Ene 2022',fin:'Presente',
+     logros:'Diseñé e implementé redes corporativas para 15 sedes con segmentación por VLAN y VPN sitio a sitio.\nInstalé y configuré más de 120 cámaras IP con grabación centralizada y acceso remoto seguro.\nReduje 35% los incidentes de conectividad mediante monitoreo proactivo con Zabbix.'},
+    {id:uid(),cargo:'Desarrollador Web Freelance',empresa:'Independiente',lugar:'Remoto',inicio:'Mar 2019',fin:'Dic 2021',
+     logros:'Desarrollé sitios web responsivos para pymes, publicados en GitHub Pages y hosting compartido.\nOptimicé tiempos de carga por debajo de 2 segundos aplicando buenas prácticas de rendimiento.'}],
+  edu:[{id:uid(),titulo:'Ingeniería de Sistemas / Telecomunicaciones',inst:'Universidad Ejemplo',lugar:'Ciudad, País',fecha:'2018',detalle:'Certificaciones: Cisco CCNA, Seguridad en CCTV IP.'}],
+  anx:[]
+};
+
+const DB='cv_harvard_db';
+let S=structuredClone(EMPTY);
+/* Normaliza datos (migra anexos antiguos de 1 foto a lista de fotos) */
+const norm=d=>{d=Object.assign(structuredClone(EMPTY),d);d.anx.forEach(a=>{if(a.img){a.imgs=[{id:uid(),src:a.img}];delete a.img}a.imgs=a.imgs||[];a.cols=a.cols||2});return d};
+const demo=()=>norm(structuredClone(DEMO));
+
+/* ============ PERSISTENCIA: IndexedDB (sin tope de 5 MB) con respaldo en localStorage ============ */
+const idb=()=>new Promise((ok,no)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore('s');r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)});
+const idbGet=async k=>{const d=await idb();return new Promise(ok=>{const q=d.transaction('s').objectStore('s').get(k);q.onsuccess=()=>ok(q.result);q.onerror=()=>ok()})};
+const idbSet=async(k,v)=>{const d=await idb();return new Promise((ok,no)=>{const t=d.transaction('s','readwrite');t.objectStore('s').put(v,k);t.oncomplete=ok;t.onerror=()=>no(t.error)})};
+const idbDel=async k=>{const d=await idb();d.transaction('s','readwrite').objectStore('s').delete(k)};
+let M={cur:'p1',names:{p1:'Perfil principal'}}; /* metadatos de perfiles */
+async function boot(){let d;
+  try{const m=await idbGet('meta');if(m)M=m;d=await idbGet('st:'+M.cur);if(!d&&M.cur==='p1')d=await idbGet('state')}catch(e){}
+  if(!d){try{d=JSON.parse(localStorage.getItem(KEY))}catch(e){}}
+  S=d?norm(d):demo();refresh()}
+let t0;
+async function save(manual){
+  try{await idbSet('st:'+M.cur,S);await idbSet('meta',M)}catch(e){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e2){toast('No se pudo guardar: exporta un respaldo');return}}
+  $('#status').textContent='Guardado '+new Date().toLocaleTimeString();if(manual)toast('Borrador guardado')}
+const autosave=()=>{$('#status').textContent='Guardando…';clearTimeout(t0);t0=setTimeout(()=>save(false),400)};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400)}
+
+/* ============ PESTAÑAS (con flechas del teclado) ============ */
+const TABS=[['datos','Datos'],['perfil','Perfil'],['skills','Habilidades'],['exp','Experiencia'],['edu','Educación'],['extras','Extras'],['anx','Anexos']];
+$('#tabs').innerHTML=TABS.map(([k,n])=>`<button class="tab" role="tab" data-t="${k}" aria-selected="false">${n}</button>`).join('');
+function tab(k){$$('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===k));$$('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+k))}
+$('#tabs').onclick=e=>{const b=e.target.closest('.tab');if(b)tab(b.dataset.t)};
+$('#tabs').onkeydown=e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;const t=$$('.tab'),i=t.findIndex(b=>b.getAttribute('aria-selected')==='true'),n=t[(i+(e.key==='ArrowRight'?1:t.length-1))%t.length];tab(n.dataset.t);n.focus()};
+tab('datos');
+
+/* ============ FORMULARIO ============ */
+const F={
+  exp:[['cargo','Cargo'],['empresa','Empresa'],['lugar','Lugar'],['inicio','Inicio'],['fin','Fin'],['logros','Logros (uno por línea; [A1] cita el Anexo 1)',1]],
+  edu:[['titulo','Título'],['inst','Institución'],['lugar','Lugar'],['fecha','Fecha'],['detalle','Detalle (opcional)',1]]
+};
+const bindSimple=()=>$$('[data-b]').forEach(i=>i.value=S[i.dataset.b]||'');
+function field(l,id,[k,n,ta],v){const a=`data-l="${l}" data-id="${id}" data-k="${k}"`;
+  return `<label>${n}</label>`+(ta?`<textarea ${a} rows="4">${esc(v)}</textarea>`:`<input type="text" ${a} value="${esc(v)}">`)}
+const mvb=(l,id)=>`<span><button class="mv" data-mv="${l}" data-id="${id}" data-d="-1" title="Subir">↑</button><button class="mv" data-mv="${l}" data-id="${id}" data-d="1" title="Bajar">↓</button> <button class="x" data-del="${l}" data-id="${id}">Eliminar</button></span>`;
+function renderLists(){
+  ['exp','edu'].forEach(l=>{$('#l-'+l).innerHTML=S[l].map((it,n)=>`<div class="item"><div class="item-top"><span>${l==='exp'?'Experiencia':'Estudio'} ${n+1}</span>${mvb(l,it.id)}</div>`+F[l].map(f=>field(l,it.id,f,it[f[0]])).join('')+`</div>`).join('')});
+  $('#l-anx').innerHTML=S.anx.map((it,n)=>`<div class="item"><div class="item-top"><span>Anexo ${n+1} · ${it.imgs.length} foto(s)</span>${mvb('anx',it.id)}</div>
+    <div class="ph">${it.imgs.map(m=>`<div><img src="${m.src}" alt=""><button data-delimg="${it.id}" data-iid="${m.id}" title="Quitar foto">×</button><button class="t3" data-rot="${it.id}" data-iid="${m.id}" title="Rotar 90°">↻</button><button class="t2" data-crop="${it.id}" data-iid="${m.id}" title="Recorte centrado: 16:9 → 4:3 → 1:1">▭</button></div>`).join('')}</div>
+    <label class="drop" style="margin-top:.6rem;padding:.7rem"><input type="file" accept="image/*" multiple data-addimg="${it.id}">+ Agregar más fotos a este anexo</label>
+    ${field('anx',it.id,['titulo','Título del anexo (ej. Rack de comunicaciones)'],it.titulo)}
+    ${field('anx',it.id,['desc','Descripción general'],it.desc)}
+    <label>Columnas de la galería</label><select data-l="anx" data-id="${it.id}" data-k="cols">${[1,2,3].map(c=>`<option ${c==it.cols?'selected':''}>${c}</option>`).join('')}</select>
+    <label class="check"><input type="checkbox" data-l="anx" data-id="${it.id}" data-k="mostrar" ${it.mostrar?'checked':''}>Mostrar en la hoja</label></div>`).join('')
+    ||'<p class="hint">Aún no hay anexos. Sube varias fotos de un mismo tema y se agrupan en un solo anexo.</p>';
+}
+
+/* Enlace de datos en tiempo real */
+document.addEventListener('input',e=>{const t=e.target;
+  if(t.dataset.b)S[t.dataset.b]=t.value;
+  else if(t.dataset.l){const it=S[t.dataset.l].find(x=>x.id===t.dataset.id);if(it)it[t.dataset.k]=t.type==='checkbox'?t.checked:t.value}
+  else return;
+  render();autosave()});
+['papel','lang','fs'].forEach(k=>$('#'+k).oninput=e=>{S[k]=k==='fs'?+e.target.value:e.target.value;$('#fsv').textContent=S.fs;render();fit();autosave()});
+
+/* Acciones de listas: agregar, eliminar, mover, quitar foto */
+document.addEventListener('click',e=>{const g=s=>e.target.closest(s);let a;
+  if(a=g('[data-add]')){const l=a.dataset.add;S[l].push(l==='anx'?{id:uid(),titulo:'',desc:'',imgs:[],mostrar:true,cols:2}:Object.assign({id:uid()},Object.fromEntries(F[l].map(f=>[f[0],'']))))}
+  else if(a=g('[data-del]'))S[a.dataset.del]=S[a.dataset.del].filter(x=>x.id!==a.dataset.id);
+  else if(a=g('[data-mv]')){const L=S[a.dataset.mv],i=L.findIndex(x=>x.id===a.dataset.id),j=i+ +a.dataset.d;if(j<0||j>=L.length)return;[L[i],L[j]]=[L[j],L[i]]}
+  else if(a=g('[data-delimg]')){const an=S.anx.find(x=>x.id===a.dataset.delimg);an.imgs=an.imgs.filter(m=>m.id!==a.dataset.iid)}
+  else if(a=g('[data-rot],[data-crop]')){const rot=a.dataset.rot,an=S.anx.find(x=>x.id===(rot||a.dataset.crop)),m=an.imgs.find(x=>x.id===a.dataset.iid);xform(m.src,rot?'r':'c').then(s=>{m.src=s;renderLists();render();autosave()});return}
+  else return;
+  renderLists();render();autosave()});
+
+/* ============ IMÁGENES: varias a la vez, comprimidas a Base64 ============ */
+const readImg=f=>new Promise(ok=>{const r=new FileReader();r.onload=()=>{const im=new Image();
+  im.onload=()=>{const k=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);ok({id:uid(),src:c.toDataURL('image/jpeg',.78)})};
+  im.onerror=()=>ok(null);im.src=r.result};r.readAsDataURL(f)});
+const readAll=async fs=>(await Promise.all([...fs].map(readImg))).filter(Boolean);
+/* Subida general: todas las fotos seleccionadas forman UN anexo */
+$('#files').onchange=async e=>{const imgs=await readAll(e.target.files);e.target.value='';if(!imgs.length)return;
+  S.anx.push({id:uid(),titulo:'',desc:'',imgs,mostrar:true,cols:imgs.length===1?1:2});renderLists();render();autosave();toast(imgs.length+' foto(s) en un nuevo anexo')};
+/* Subida dentro de un anexo existente */
+document.addEventListener('change',async e=>{const id=e.target.dataset.addimg;if(!id)return;
+  const imgs=await readAll(e.target.files);const an=S.anx.find(x=>x.id===id);an.imgs.push(...imgs);renderLists();render();autosave()});
+
+/* ============ HOJA A4 / CARTA ============ */
+const T={es:{p:'Perfil profesional',x:'Experiencia profesional',e:'Educación y certificaciones',h:'Habilidades',a:'Anexos y evidencias',y:'Proyectos',r:'Referencias',n:'Anexo',pr:'Presente',nm:'Tu nombre'},
+         en:{p:'Professional Summary',x:'Professional Experience',e:'Education & Certifications',h:'Skills',a:'Appendices & Evidence',y:'Projects',r:'References',n:'Appendix',pr:'Present',nm:'Your name'}};
+const lk=(v,m)=>`<a href="${esc(m?'mailto:'+v:/^https?:/.test(v)?v:'https://'+v)}" style="color:inherit;text-decoration:none">${esc(v)}</a>`;
+const paper=()=>S.papel==='letter'?{w:215.9,h:279.4,n:'letter'}:{w:210,h:297,n:'A4'};
+function render(){
+  const s=S,t=T[s.lang]||T.es,P=paper(),sh=$('#sheet'),V=s.vis||{};
+  const xr=q=>q.replace(/\[A(\d+)\]/g,(m,n)=>`<a href="#anx${n}" style="color:inherit">(${t.n} ${n})</a>`);
+  const proy=lines(s.proy).length?`<ul>${lines(s.proy).map(l=>`<li>${xr(esc(l))}</li>`).join('')}</ul>`:'';
+  const refs=lines(s.refs).map(l=>`<div>${esc(l)}</div>`).join('');
+  sh.style.width=P.w+'mm';sh.style.minHeight=P.h+'mm';sh.style.fontSize=s.fs+'pt';
+  $('#pgcss').textContent=`@page{size:${P.n};margin:14mm 16mm}`;
+  const contact=[esc(s.ciudad),esc(s.tel),s.email&&lk(s.email,1),s.linkedin&&lk(s.linkedin),s.web&&lk(s.web)].filter(Boolean).join(' &nbsp;|&nbsp; ');
+  const skills=lines(s.habilidades).map(l=>{const i=l.indexOf(':');return i>0?`<div class="sk"><b>${esc(l.slice(0,i))}:</b> ${esc(l.slice(i+1).trim())}</div>`:`<div class="sk">${esc(l)}</div>`}).join('');
+  const exp=s.exp.map(x=>{const fin=/^(presente|present)$/i.test(x.fin)?t.pr:x.fin;return `<div class="entry"><div class="row"><b>${esc(x.empresa)}</b><span class="d">${esc([x.inicio,fin].filter(Boolean).join(' – '))}</span></div>
+    <div class="row sub"><span>${esc(x.cargo)}</span><span>${esc(x.lugar)}</span></div><ul>${lines(x.logros).map(l=>`<li>${xr(esc(l))}</li>`).join('')}</ul></div>`}).join('');
+  const edu=s.edu.map(x=>`<div class="entry"><div class="row"><b>${esc(x.inst)}</b><span class="d">${esc(x.fecha)}</span></div>
+    <div class="row sub"><span>${esc(x.titulo)}</span><span>${esc(x.lugar)}</span></div>${x.detalle?`<div>${esc(x.detalle)}</div>`:''}</div>`).join('');
+  const an=s.anx.filter(a=>a.mostrar&&a.imgs.length);
+  const gal=an.map((a,i)=>`<div class="annex" id="anx${i+1}"><h3>${t.n} ${i+1}${a.titulo?'. '+esc(a.titulo):''}</h3>${a.desc?`<p>${esc(a.desc)}</p>`:''}<div class="gallery c${a.cols}">${a.imgs.map((m,k)=>`<figure class="fig"><img src="${m.src}" alt=""><figcaption>${t.n} ${i+1}.${k+1}</figcaption></figure>`).join('')}</div></div>`).join('');
+  const sec=(n,h,c='')=>h?`<section class="cv-sec ${c}"><h2>${n}</h2>${h}</section>`:'';
+  sh.innerHTML=`<div class="cv-name" role="heading" aria-level="2">${esc(s.nombre)||t.nm}</div>${s.titulo?`<div class="cv-title">${esc(s.titulo)}</div>`:''}<div class="cv-contact">${contact}</div>
+    ${V.p!==false?sec(t.p,s.perfil&&`<p style="margin:0;text-align:justify">${xr(esc(s.perfil))}</p>`):''}${V.x!==false?sec(t.x,exp):''}${V.y!==false?sec(t.y,proy):''}${V.e!==false?sec(t.e,edu):''}${V.h!==false?sec(t.h,skills):''}${V.r!==false?sec(t.r,refs):''}${V.a!==false?sec(t.a,gal,'annex-page'):''}`;
+  pages();
+}
+/* Contador de páginas y líneas de salto aproximadas */
+function pages(){const sh=$('#sheet'),z=parseFloat(sh.style.zoom)||1,mm=3.7795,P=paper(),pc=(P.h-28)*mm,pad=16*mm;
+  const h=sh.getBoundingClientRect().height/z-2*pad,n=Math.max(1,Math.ceil(h/pc-.02));
+  $$('.pgline').forEach(x=>x.remove());
+  for(let k=1;k<n;k++){const d=document.createElement('div');d.className='pgline';d.style.top=(pad+k*pc)+'px';d.textContent='salto de página aprox.';sh.appendChild(d)}
+  $('#pill').textContent='≈ '+n+(n===1?' página':' páginas')}
+function fit(){const p=$('#preview');if(!p.clientWidth)return;$('#sheet').style.zoom=Math.min(1,(p.clientWidth-(innerWidth<900?24:48))/(paper().w*3.7795));pages()}
+new ResizeObserver(fit).observe($('#preview'));
+
+/* ============ ACCIONES ============ */
+function refresh(){bindSimple();profUI();$$('[data-vis]').forEach(c=>c.checked=(S.vis||{})[c.dataset.vis]!==false);$('#papel').value=S.papel;$('#lang').value=S.lang;$('#fs').value=S.fs;$('#fsv').textContent=S.fs;renderLists();render();fit()}
+$('#save').onclick=()=>save(true);
+$('#demo').onclick=()=>{if(confirm('Se reemplazarán los datos actuales por el perfil técnico de ejemplo. ¿Continuar?')){S=demo();refresh();save(false);toast('Datos por defecto cargados')}};
+$('#clear').onclick=()=>{if(confirm('Se borrarán todos los datos y anexos. ¿Continuar?')){S=norm({});refresh();save(false);toast('Formulario limpio')}};
+$('#print').onclick=()=>window.print();
+/* Respaldo en JSON */
+$('#exp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));a.download='hoja-de-vida-respaldo.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)};
+$('#imp').onclick=()=>$('#impf').click();
+$('#impf').onchange=async e=>{try{S=norm(JSON.parse(await e.target.files[0].text()));refresh();save(false);toast('Respaldo importado')}catch(x){toast('El archivo de respaldo no es válido')}e.target.value=''};
+/* Móvil: alternar Editar / Vista previa */
+$$('.mbar .btn').forEach(b=>b.onclick=()=>{$('#app').classList.toggle('vp',b.dataset.v==='1');setTimeout(fit,60)});
+
+/* ============ ROTAR / RECORTAR FOTOS ============ */
+const xform=(src,mode)=>new Promise(ok=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),x=c.getContext('2d');
+  if(mode==='r'){c.width=im.height;c.height=im.width;x.translate(c.width/2,c.height/2);x.rotate(Math.PI/2);x.drawImage(im,-im.width/2,-im.height/2)}
+  else{const r=im.width/im.height,tg=r>1.55?4/3:r>1.2?1:16/9;let w=im.width,h=im.height;if(w/h>tg)w=h*tg;else h=w/tg;c.width=w;c.height=h;x.drawImage(im,(im.width-w)/2,(im.height-h)/2,w,h,0,0,w,h)}
+  ok(c.toDataURL('image/jpeg',.85))};im.src=src});
+/* Secciones visibles */
+$$('[data-vis]').forEach(c=>c.onchange=()=>{S.vis=S.vis||{};S.vis[c.dataset.vis]=c.checked;render();autosave()});
+/* ============ PERFILES MÚLTIPLES ============ */
+const profUI=()=>{$('#prof').innerHTML=Object.entries(M.names).map(([id,n])=>`<option value="${id}" ${id===M.cur?'selected':''}>${esc(n)}</option>`).join('')};
+async function setProf(id){await save(false);M.cur=id;S=norm(await idbGet('st:'+id)||{});refresh();await idbSet('meta',M)}
+$('#prof').onchange=e=>setProf(e.target.value);
+$('#pnew').onclick=async()=>{const n=prompt('Nombre del nuevo perfil (se crea como copia del actual):');if(!n)return;const id='p'+uid();await save(false);M.names[id]=n;await idbSet('st:'+id,S);await setProf(id);toast('Perfil creado')};
+$('#pren').onclick=()=>{const n=prompt('Nuevo nombre del perfil:',M.names[M.cur]);if(n){M.names[M.cur]=n;profUI();save(false)}};
+$('#pdel').onclick=async()=>{if(Object.keys(M.names).length<2)return toast('Debe quedar al menos un perfil');if(!confirm('¿Eliminar el perfil "'+M.names[M.cur]+'"?'))return;
+  const old=M.cur;delete M.names[old];await idbDel('st:'+old);M.cur=Object.keys(M.names)[0];S=norm(await idbGet('st:'+M.cur)||{});refresh();await idbSet('meta',M);toast('Perfil eliminado')};
+/* Aviso informativo de almacenamiento local */
+try{if(!localStorage.getItem('cv_notice'))$('#notice').hidden=false}catch(e){}
+$('#nok').onclick=()=>{try{localStorage.setItem('cv_notice','1')}catch(e){}$('#notice').hidden=true};
+/* PWA: funcionamiento sin conexión */
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+boot();
+</script>
+</body>
+</html>
